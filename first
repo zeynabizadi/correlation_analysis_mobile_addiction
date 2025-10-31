@@ -1,0 +1,46 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import pearsonr
+# دیتای فرضی: میزان شیوع اعتیاد (درصد) و میانگین استفاده روزانه از موبایل (ساعت)
+countries = [f"Country_{i}" for i in range(1, 21)]
+
+addiction_rate = np.random.normal(loc=5, scale=2, size=20)  # درصد
+mobile_usage = addiction_rate * 0.7 + np.random.normal(loc=2, scale=0.5, size=20)  # ساعت
+
+df = pd.DataFrame({
+    "Country": countries,
+    "Addiction_Rate (%)": addiction_rate,
+    "Mobile_Usage (Hours)": mobile_usage
+})
+
+df.head()
+plt.figure(figsize=(12, 5))
+
+plt.subplot(1, 2, 1)
+sns.histplot(df["Addiction_Rate (%)"], bins=10, kde=True, color='red')
+plt.title("هیستوگرام میزان اعتیاد")
+
+plt.subplot(1, 2, 2)
+sns.histplot(df["Mobile_Usage (Hours)"], bins=10, kde=True, color='blue')
+plt.title("هیستوگرام استفاده از موبایل")
+
+plt.tight_layout()
+plt.show()
+pearson_coef, p_value = pearsonr(df["Addiction_Rate (%)"], df["Mobile_Usage (Hours)"])
+
+print(f"ضریب همبستگی پیرسون: {pearson_coef:.3f}")
+print(f"مقدار p-value: {p_value:.5f}")
+
+if abs(pearson_coef) > 0.7:
+    strength = "قوی"
+elif abs(pearson_coef) > 0.4:
+    strength = "متوسط"
+else:
+    strength = "ضعیف"
+
+relation = "مستقیم" if pearson_coef > 0 else "معکوس"
+
+print(f"✅ همبستگی {strength} و {relation} بین دو متغیر وجود دارد.")
+print("✅ از آنجا که p-value < 0.05، این رابطه از نظر آماری معنادار است." if p_value < 0.05 else "⚠️ این رابطه از نظر آماری معنادار نیست.")
