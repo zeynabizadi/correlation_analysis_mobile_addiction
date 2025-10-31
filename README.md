@@ -1,18 +1,20 @@
-# 📊 Pearson Correlation Analysis
 
-This project is a simple Python script to calculate the **Pearson correlation coefficient** between two numerical variables.In this example, the relationship between mobile phone addiction rates and average hours of mobile phone use is examined.
----
+```markdown
+# Pearson Correlation Analysis between Addiction Rate and Mobile Usage 📱
 
-## 🧩  How to run
+This Python script calculates the Pearson correlation coefficient between two numeric variables using the `scipy` library.
 
-1. First install the required libraries:
+## 📊 Input
+Two columns from a DataFrame:
+- **Addiction_Rate (%)**
+- **Mobile_Usage (Hours)**
 
+## 🧮 Output
+- Pearson correlation coefficient (`r`)
+- `p-value`
+- Interpretation of relationship (strong / moderate / weak, direct or inverse)
+- Statistical significance (p < 0.05)
 
+## ⚙️ Dependencies
 ```bash
 pip install pandas scipy
-
-
-
-
-
-
