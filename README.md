@@ -11,7 +11,7 @@ This project is a simple Python script to calculate the **Pearson correlation co
 ```bash
 pip install pandas scipy
 
-2. Then run the script:
+
 
 
 
