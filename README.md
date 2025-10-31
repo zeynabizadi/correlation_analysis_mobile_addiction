@@ -7,5 +7,12 @@ This project is a simple Python script to calculate the **Pearson correlation co
 
 1. First install the required libraries:
 
+
 ```bash
 pip install pandas scipy
+
+2. Then run the script:
+
+
+
+
